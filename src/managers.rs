@@ -9,6 +9,13 @@ pub struct AudioObjectManager {
 }
 
 impl AudioObjectManager {
+    pub fn undo(&mut self) {
+        if self.current > 0 {
+            self.current -= 1;
+            self.restore_current();
+        }
+    }
+
     fn save(&mut self) {
         self.history.truncate(self.current);
         self.history.push_back(self.clone());
