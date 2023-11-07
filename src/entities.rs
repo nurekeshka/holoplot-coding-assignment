@@ -10,8 +10,8 @@ impl AudioObject {
         AudioObject { id, position }
     }
 
-    pub fn teleport_to(&mut self, position: Position) {
-        self.position = position;
+    pub fn teleport(&mut self, to_position: Position) {
+        self.position = to_position;
     }
 }
 
