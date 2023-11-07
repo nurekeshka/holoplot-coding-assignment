@@ -9,6 +9,17 @@ pub struct AudioObjectManager {
 }
 
 impl AudioObjectManager {
+    pub fn new() -> AudioObjectManager {
+        AudioObjectManager {
+            history: VecDeque::new(),
+            objects: HashMap::new(),
+            counter: 0,
+            current: 0,
+        }
+    }
+}
+
+impl AudioObjectManager {
     pub fn undo(&mut self) {
         if self.current > 0 {
             self.current -= 1;
