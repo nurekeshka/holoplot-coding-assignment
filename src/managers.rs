@@ -1,6 +1,7 @@
 use crate::entities::AudioObject;
 use crate::utils::Position;
 use std::collections::{HashMap, VecDeque};
+use std::fmt;
 
 pub struct AudioObjectManager {
     pub objects: HashMap<usize, AudioObject>,
@@ -90,6 +91,18 @@ impl AudioObjectManager {
     fn next_id(&mut self) -> usize {
         self.counter += 1;
         return self.counter;
+    }
+}
+
+impl fmt::Display for AudioObjectManager {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        writeln!(f, "Audio Object Manager's Current State:")?;
+
+        for (id, object) in self.objects.clone() {
+            writeln!(f, "Object #{} is at {}", id, object.position.to_string())?;
+        }
+
+        write!(f, "")
     }
 }
 
