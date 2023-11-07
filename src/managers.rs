@@ -14,6 +14,14 @@ impl AudioObjectManager {
         self.history.push_back(self.clone());
         self.current += 1;
     }
+
+    fn restore_current(&mut self) {
+        if let Some(state) = self.history.get(self.current) {
+            let mut clone = state.clone();
+            clone.history = self.history.clone();
+            *self = clone;
+        }
+    }
 }
 
 impl AudioObjectManager {
