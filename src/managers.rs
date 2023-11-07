@@ -16,6 +16,13 @@ impl AudioObjectManager {
         }
     }
 
+    pub fn redo(&mut self) {
+        if self.current < self.history.len() - 1 {
+            self.current += 1;
+            self.restore_current();
+        }
+    }
+
     fn save(&mut self) {
         self.history.truncate(self.current);
         self.history.push_back(self.clone());
