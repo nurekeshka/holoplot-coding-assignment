@@ -9,6 +9,14 @@ pub struct AudioObjectManager {
 }
 
 impl AudioObjectManager {
+    fn save(&mut self) {
+        self.history.truncate(self.current);
+        self.history.push_back(self.clone());
+        self.current += 1;
+    }
+}
+
+impl AudioObjectManager {
     pub fn get(&mut self, id: usize) -> Option<AudioObject> {
         return self.objects.get(&id).map(|obj| obj.clone());
     }
