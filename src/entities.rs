@@ -5,6 +5,12 @@ pub struct AudioObject {
     pub position: Position,
 }
 
+impl AudioObject {
+    pub fn new(id: usize, position: Position) -> AudioObject {
+        AudioObject { id, position }
+    }
+}
+
 impl Clone for AudioObject {
     fn clone(&self) -> AudioObject {
         AudioObject {
