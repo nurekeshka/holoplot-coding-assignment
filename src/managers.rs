@@ -12,6 +12,10 @@ impl AudioObjectManager {
     pub fn get(&mut self, id: usize) -> Option<AudioObject> {
         return self.objects.get(&id).map(|obj| obj.clone());
     }
+
+    pub fn contains(&mut self, id: usize) -> bool {
+        return self.objects.contains_key(&id);
+    }
 }
 
 impl Clone for AudioObjectManager {
