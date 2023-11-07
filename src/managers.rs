@@ -1,4 +1,5 @@
 use crate::entities::AudioObject;
+use crate::utils::Position;
 use std::collections::{HashMap, VecDeque};
 
 pub struct AudioObjectManager {
@@ -16,6 +17,17 @@ impl AudioObjectManager {
             counter: 0,
             current: 0,
         }
+    }
+}
+
+impl AudioObjectManager {
+    pub fn add(&mut self, position: Position) -> AudioObject {
+        self.save();
+
+        let audio_object = AudioObject::new(self.next_id(), position);
+        self.objects.insert(audio_object.id, audio_object.clone());
+
+        return audio_object;
     }
 }
 
