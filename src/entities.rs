@@ -9,6 +9,10 @@ impl AudioObject {
     pub fn new(id: usize, position: Position) -> AudioObject {
         AudioObject { id, position }
     }
+
+    pub fn teleport_to(&mut self, position: Position) {
+        self.position = position;
+    }
 }
 
 impl Clone for AudioObject {
