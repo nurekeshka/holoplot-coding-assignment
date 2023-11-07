@@ -35,6 +35,17 @@ impl AudioObjectManager {
 
         return self.objects.remove(&id);
     }
+
+    pub fn move_object(&mut self, id: usize, to_position: Position) -> Option<AudioObject> {
+        self.save();
+
+        if self.contains(id) {
+            self.objects.get_mut(&id)?.teleport(to_position);
+            return self.get(id);
+        } else {
+            return None;
+        }
+    }
 }
 
 impl AudioObjectManager {
