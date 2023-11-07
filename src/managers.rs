@@ -16,6 +16,11 @@ impl AudioObjectManager {
     pub fn contains(&mut self, id: usize) -> bool {
         return self.objects.contains_key(&id);
     }
+
+    fn next_id(&mut self) -> usize {
+        self.counter += 1;
+        return self.counter;
+    }
 }
 
 impl Clone for AudioObjectManager {
