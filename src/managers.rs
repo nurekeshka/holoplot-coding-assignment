@@ -29,6 +29,12 @@ impl AudioObjectManager {
 
         return audio_object;
     }
+
+    pub fn remove(&mut self, id: usize) -> Option<AudioObject> {
+        self.save();
+
+        return self.objects.remove(&id);
+    }
 }
 
 impl AudioObjectManager {
