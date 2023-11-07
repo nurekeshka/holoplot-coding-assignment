@@ -8,6 +8,12 @@ pub struct AudioObjectManager {
     counter: usize,
 }
 
+impl AudioObjectManager {
+    pub fn get(&mut self, id: usize) -> Option<AudioObject> {
+        return self.objects.get(&id).map(|obj| obj.clone());
+    }
+}
+
 impl Clone for AudioObjectManager {
     fn clone(&self) -> AudioObjectManager {
         AudioObjectManager {
